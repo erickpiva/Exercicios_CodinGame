@@ -4,6 +4,13 @@
 #include <algorithm>
 
 using namespace std;
+/* Exemplo de input
+
+50
+1
+200 15
+
+Deve retornar 50 como resposta */
 
 
 int main()
