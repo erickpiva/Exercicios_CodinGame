@@ -26,12 +26,12 @@ int main()
         while (!speed_ok)
         {
 
-            double time_to_travel = ((double)distance / ((double)speed / 3.6f));
+            double time_to_travel = (distance / (speed / 3.6));
             for (int n = 0; time_to_travel >= n * duration; n += 2)
             {
                 float end_of_time = (n + 1) * duration;
                 time_to_travel <= end_of_time ? speed_ok = true : speed_ok = false;
-                cerr << "Round " << n * duration << " " << (n + 1) * duration << endl;
+                cerr << endl << "Round " << n * duration << " " << (n + 1) * duration << endl;
                 cerr << "Dist " << distance << " Dur " << duration << " Speed " << speed << endl;
                 cerr << "tempo pra chegar " << time_to_travel << endl;
             }
