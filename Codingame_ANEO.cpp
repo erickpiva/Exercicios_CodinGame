@@ -27,14 +27,10 @@ int main()
         {
 
             double time_to_travel = (distance / (speed / 3.6));
-            for (int n = 0; time_to_travel >= n * duration; n += 2)
-            {
-                float end_of_time = (n + 1) * duration;
-                time_to_travel <= end_of_time ? speed_ok = true : speed_ok = false;
-                cerr << endl << "Round " << n * duration << " " << (n + 1) * duration << endl;
-                cerr << "Dist " << distance << " Dur " << duration << " Speed " << speed << endl;
-                cerr << "tempo pra chegar " << time_to_travel << endl;
-            }
+            int cycle = time_to_travel/duration; // Checks in which cycle the light is when arrives.
+
+            cycle % 2 == 0 ? speed_ok = 1 : speed_ok = 0; // if the integer part of the cycle is even, then it is green.
+
             if (!speed_ok)
             {
                 speed--;
