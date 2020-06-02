@@ -23,18 +23,16 @@ int main()
         grid[i] = new char[width]; //x - axis
     }
     
-    cerr<<width<<height<<endl;
-
+    cerr<< "Tamanhos: " <<width<<" "<<height<<endl;
+    string line;
     for (int i = 0; i < height; i++) 
     {
-        string line;
-        getline(cin, line); // width characters, each either 0 or .
-        char temp[40];
-        line.copy(temp, width, 0);
-        grid[i] = temp;
-                
+        getline(cin, line); 
+        cerr<<line<<endl;
+        line.copy(grid[i], width, 0);
     }
-
+    cerr<<"grid[0][0] = "<<grid[0][0]<<" | grid[0][1] = "<<grid[0][1]<<endl;
+    cerr<<"grid[1][0] = "<<grid[1][0]<<" | grid[1][1] = "<<grid[1][1]<<endl;
     
     for (int i = 0; i < height; i++)
     {
