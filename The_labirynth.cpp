@@ -69,7 +69,7 @@ void SetObstacles(node a[], int Rows, int Columns, string s[])
 }
 
 
-void SolvePath (node array[], int Rows, int Columns,string map[], node* Start, node* End, list<int> &output_path)
+bool SolvePath (node array[], int Rows, int Columns,string map[], node* Start, node* End, list<int> &output_path)
 {
     cerr<<"A*Called"<<endl;
     output_path.clear();
@@ -147,7 +147,14 @@ void SolvePath (node array[], int Rows, int Columns,string map[], node* Start, n
             }
             temp = temp->Parent;
         }
-            
+        if(output_path.empty())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
 }
 
 
@@ -236,6 +243,8 @@ int main()
         //Debug
         
         cerr<<"LFCR "<<bLookingForControlRoom<<" ICRF "<<bIsControlRoomFound<<" GBTT "<<bGoingBackToTerminal<<endl;
+        for (int y = 0; y < R; ++y)
+            cerr<<sROW[y]<<endl;
         
         //We'll need three distinct behaviour
                 
@@ -254,7 +263,7 @@ int main()
                 for (int y = 0; y < R; ++y)
                     for (int x = 0; x < C; ++x)
                     {
-                        if(!Maze[y*C+x].bIsObstacle)
+                        if(!Maze[y*C+x].bIsObstacle && SolvePath(Maze, R, C, sROW, CurrentNode, &Maze[y*C+x],HomeDirection))
                         {
                             float distance = HeuristicDistance(CurrentNode, &Maze[y*C+x]);
                             if (distance > tempDistance)
@@ -271,8 +280,8 @@ int main()
 
             if (!HomeDirection.empty())
             {        
-                cout<<output[HomeDirection.front()]<<endl;
-                HomeDirection.pop_front();
+                cout<<output[HomeDirection.back()]<<endl;
+                HomeDirection.pop_back();
             }                         
             
         }
@@ -298,8 +307,8 @@ int main()
 
             if(!HomeDirection.empty())
             {
-                cout<<output[HomeDirection.front()]<<endl;
-                HomeDirection.pop_front();
+                cout<<output[HomeDirection.back()]<<endl;
+                HomeDirection.pop_back();
                 
             }
 
@@ -340,8 +349,8 @@ int main()
 
             if(!HomeDirection.empty())
             {
-                cout<<output[HomeDirection.front()]<<endl;
-                HomeDirection.pop_front();  
+                cout<<output[HomeDirection.back()]<<endl;
+                HomeDirection.pop_back();  
             }
 
         }
