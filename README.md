@@ -1,2 +1,2 @@
-# Projetos_Aleatorios
-Varios códigos para ficar armazenado
+# Exercícios de Algorítmos - CodinGame
+Alguns exercícios de algorítmos da plataforma CodinGame
